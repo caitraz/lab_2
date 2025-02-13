@@ -1,0 +1,5 @@
+---
+title: "lab_2_exercises"
+format: html
+editor: visual
+---
