@@ -3,3 +3,251 @@ title: "lab_2_exercises"
 format: html
 editor: visual
 ---
+
+```{r}
+library(dplyr)
+setwd("/Users/caitlinrasbid/github/lab_2/data/doi_10_5061_dryad_18pm5__v20170130/Itter_et_al_EAP16-0589.R1")
+tree_dat <- read.csv("tree_dat.csv")
+```
+
+```{r}
+#1
+glimpse(tree_dat)
+```
+
+## The structure is 131,386 rows by 8 columns. The dataset shows the 8 variables, treeID, standID, stand, year, species, age, inc, and rad_ib. The structure also indicates the variable type for each, either double or character.
+
+```{r}
+#2
+tree_dat %>%
+  filter(standID == 1) %>%
+  tally()
+```
+
+## There are 979 trees in stand 1.
+
+```{r}
+#3
+tree_dat %>%
+  filter(species %in% c("ABBA", "PIST")) %>%
+count(species)
+```
+
+## 13033 in Abies balsamea and 4188 in Pinus strobus
+
+```{r}
+#4
+last_year <- max(tree_dat$year, na.rm = TRUE)
+
+tree_dat %>%
+  filter(year == last_year, age > 200) %>%
+  tally()
+```
+
+## There are 7 trees older than 200 years old in the last year of the dataset.
+
+```{r}
+#5
+tree_dat %>%
+  slice_max(order_by = age, n = 1)
+
+oldest_tree <- tree_dat %>%
+  slice_max(order_by = age, n = 1)
+head(oldest_tree)
+```
+
+## The oldest tree is treeID 24 in standID 2, with stand A2 in year 2007. It is a Pinus resinosa and is 269 years old. The linear growth increment is 0.37mm and the inside bark radius was 308.84mm.
+
+```{r}
+#6
+tree_dat %>%
+  filter(year == 2001) %>%
+  slice_max(order_by = age, n = 5)
+
+
+```
+
+## The five oldest trees in 2001 are shown in the table above
+
+```{r}
+#7
+tree_dat %>%
+  filter(year == 2002) %>%
+  slice_sample(prop = 0.3)
+```
+
+## There are 687 trees in a 30% sample of 2002.
+
+```{r}
+#8
+tree_dat %>%
+  filter(standID == 5, year == 2007) %>%
+  arrange(desc(rad_ib)) %>%
+  slice_head(n = 3)
+```
+
+## The treeIDs are 128, 157, and 135.
+
+```{r}
+#9
+tree_dat %>%
+  select(treeID, standID, year, rad_ib) %>%
+  filter(standID == 3, year == 2007) %>%
+  slice_min(order_by = rad_ib, n = 3)
+```
+
+## The three trees with the smallest radius at breast height in 2007 are shown above in the table, treeID 50, 56, and 36.
+
+```{r}
+#10
+tree_dat %>%
+  select(treeID, year, rad_ib) %>%
+  glimpse()
+```
+
+```{r}
+#11
+tree_dat %>%
+  dplyr::select(contains("ID")) %>%
+  glimpse()
+```
+
+```{r}
+#12
+tree_dat %>%
+  dplyr::select(contains("ID") | contains("stand")) %>%
+  glimpse()
+```
+
+```{r}
+#13
+tree_dat <- tree_dat %>%
+  rename(rad_ib_mm = rad_ib, inc_mm = inc) %>%
+  glimpse()
+```
+
+```{r}
+#14
+tree_dat <- tree_dat %>%
+  mutate(rad_ib_cm = rad_ib_mm / 10)
+  
+tree_dat <- tree_dat %>%
+  mutate(ba_m2 = 0.00007854 * rad_ib_cm)
+
+```
+
+```{r}
+tree_dat %>%
+  filter(species == "POTR", year == 2007) %>%
+  summarize(mean_ba = mean(ba_m2, na.rm = TRUE))
+```
+
+## The mean BA_m2 of the Populus tremuloides species is 0.0007883588 in 2007
+
+```{r}
+#15
+tree_dat %>%
+  mutate(established = if_else(age > 5, TRUE, FALSE)) %>%
+  count(established)
+```
+
+## There are 122503 established trees and 8883 unestablished trees (less than 5 years old)
+
+```{r}
+#16
+tree_dat %>%
+  mutate(DBH_class = case_when(
+    rad_ib_cm <= 2.5 ~ "seedling",
+    rad_ib_cm > 2.5 & rad_ib_cm <= 10 ~ "sapling",
+    rad_ib_cm > 10 & rad_ib_cm <= 30 ~ "pole",
+    rad_ib_cm > 30 ~ "sawlog"
+    )) %>%
+      filter(year == 2007) %>%
+      count(DBH_class)
+```
+
+## There are 473 poles, 1817 saplings, and 1 sawlog in 2007.
+
+```{r}
+#17
+tree_dat %>%
+  filter(year == 2007) %>%
+  summarize(mean_rad_ib = mean(rad_ib_cm), sd_rad_ib = sd(rad_ib_cm))
+```
+
+## The mean breast radius was 8.046755cm in 2007. This suggests that the average tree in 2007 would be considered a sapling, which is consistent with the results from question 16. The standard deviation was 3.069321cm, indicating that 68% of the trees will have a DBH between \~4.98 cm and 11.12 cm. This is again consistent with question 16, as the second largest DBH class was pole, the next grouping larger than sapling. Since no trees measured were seedlings, this suggests a somewhat normal distribution but with a right skew.
+
+```{r}
+#18
+tree_dat %>%
+  filter(year == 2003) %>%
+  group_by(species) %>%
+  summarize(species_mean_age = mean(age, na.rm = TRUE)) %>%
+  arrange(desc(species_mean_age)) %>%
+  slice_head(n = 3)
+```
+
+## The species with the highest mean ages in 2003 are Thuja occidentalis, Fraxinus nigra, and Pinus strobus
+
+```{r}
+#19
+tree_dat %>%
+  summarize(
+    unique_years = n_distinct(year),
+    first_year = min(year),
+    last_year = max(year)
+  )
+```
+
+## The data collected covers 111 unique years, with the first year being in 1897 and the last year in 2007.
+
+```{r}
+#20
+tree_dat %>%
+  group_by(standID) %>%
+  summarize(unique_years = n_distinct(year)) %>%
+  filter(unique_years == max(unique_years))%>%
+  print()
+
+```
+
+## Stands 1, 15, 16, 17, and 24 are tied for the maximum number of unique years recorded at 111, the total span of the data collection period.
+
+```{r}
+#21
+tree_dat %>%
+  group_by(species, treeID) %>%
+  arrange(treeID, year) %>%
+  mutate(annual_growth = rad_ib_cm - lag(rad_ib_cm),
+        total_growth_record = n_distinct(year)) %>%
+  filter(total_growth_record >= 10) %>%
+  group_by(species) %>%
+  summarize(
+    avg_growth = mean(annual_growth, na.rm = TRUE),
+    sd_growth = sd(annual_growth, na.rm = TRUE)) %>%
+  arrange(desc(avg_growth)) %>%
+  slice_head(n = 3)
+```
+
+## The three species with the fastest average growth rate are Pinus resinosa, Populus tremuloides, and Pinus banksiana
+
+```{r}
+tree_dat %>%
+  group_by(species, treeID) %>%
+  arrange(treeID, year) %>%
+  mutate(annual_growth = rad_ib_cm - lag(rad_ib_cm),
+        total_growth_record = n_distinct(year)) %>%
+  filter(total_growth_record >= 10) %>%
+  group_by(species) %>%
+  summarize(
+    avg_growth = mean(annual_growth, na.rm = TRUE),
+    sd_growth = sd(annual_growth, na.rm = TRUE)) %>%
+  arrange(avg_growth) %>%
+  slice_head(n = 3)
+```
+
+## The three species with the slowest average growth rate are Larix laricina, Thuja occidentalis, and Quercus rubra.
+
+## A picture of Pinus resinosa, the fastest growing species, is located in the img folder as well as below.
+
+![Pinus resinosa](img/pinus_resinosa.jpg)

@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>lab_2_exercises</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="lab_2_exercises_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lab_2_exercises_files/libs/quarto-html/quarto.js"></script>
+<script src="lab_2_exercises_files/libs/quarto-html/popper.min.js"></script>
+<script src="lab_2_exercises_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="lab_2_exercises_files/libs/quarto-html/anchor.min.js"></script>
+<link href="lab_2_exercises_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lab_2_exercises_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="lab_2_exercises_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="lab_2_exercises_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="lab_2_exercises_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">lab_2_exercises</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/caitlinrasbid/github/lab_2/data/doi_10_5061_dryad_18pm5__v20170130/Itter_et_al_EAP16-0589.R1"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"tree_dat.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#1</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(tree_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 131,386
+Columns: 8
+$ treeID  &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ standID &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ stand   &lt;chr&gt; "A1", "A1", "A1", "A1", "A1", "A1", "A1", "A1", "A1", "A1", "A…
+$ year    &lt;int&gt; 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 19…
+$ species &lt;chr&gt; "ABBA", "ABBA", "ABBA", "ABBA", "ABBA", "ABBA", "ABBA", "ABBA"…
+$ age     &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…
+$ inc     &lt;dbl&gt; 0.930, 0.950, 0.985, 0.985, 0.715, 0.840, 0.685, 0.940, 1.165,…
+$ rad_ib  &lt;dbl&gt; 10.78145, 11.73145, 12.71645, 13.70145, 14.41645, 15.25645, 15…</code></pre>
+</div>
+</div>
+<section id="the-structure-is-131386-rows-by-8-columns.-the-dataset-shows-the-8-variables-treeid-standid-stand-year-species-age-inc-and-rad_ib.-the-structure-also-indicates-the-variable-type-for-each-either-double-or-character." class="level2">
+<h2 class="anchored" data-anchor-id="the-structure-is-131386-rows-by-8-columns.-the-dataset-shows-the-8-variables-treeid-standid-stand-year-species-age-inc-and-rad_ib.-the-structure-also-indicates-the-variable-type-for-each-either-double-or-character.">The structure is 131,386 rows by 8 columns. The dataset shows the 8 variables, treeID, standID, stand, year, species, age, inc, and rad_ib. The structure also indicates the variable type for each, either double or character.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#2</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(standID <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    n
+1 979</code></pre>
+</div>
+</div>
+</section>
+<section id="there-are-979-trees-in-stand-1." class="level2">
+<h2 class="anchored" data-anchor-id="there-are-979-trees-in-stand-1.">There are 979 trees in stand 1.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#3</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"ABBA"</span>, <span class="st">"PIST"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  species     n
+1    ABBA 13033
+2    PIST  4188</code></pre>
+</div>
+</div>
+</section>
+<section id="in-abies-balsamea-and-4188-in-pinus-strobus" class="level2">
+<h2 class="anchored" data-anchor-id="in-abies-balsamea-and-4188-in-pinus-strobus">13033 in Abies balsamea and 4188 in Pinus strobus</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#4</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>last_year <span class="ot">&lt;-</span> <span class="fu">max</span>(tree_dat<span class="sc">$</span>year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> last_year, age <span class="sc">&gt;</span> <span class="dv">200</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  n
+1 7</code></pre>
+</div>
+</div>
+</section>
+<section id="there-are-7-trees-older-than-200-years-old-in-the-last-year-of-the-dataset." class="level2">
+<h2 class="anchored" data-anchor-id="there-are-7-trees-older-than-200-years-old-in-the-last-year-of-the-dataset.">There are 7 trees older than 200 years old in the last year of the dataset.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#5</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> age, <span class="at">n =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  treeID standID stand year species age  inc rad_ib
+1     24       2    A2 2007    PIRE 269 0.37 308.84</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>oldest_tree <span class="ot">&lt;-</span> tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> age, <span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(oldest_tree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  treeID standID stand year species age  inc rad_ib
+1     24       2    A2 2007    PIRE 269 0.37 308.84</code></pre>
+</div>
+</div>
+</section>
+<section id="the-oldest-tree-is-treeid-24-in-standid-2-with-stand-a2-in-year-2007.-it-is-a-pinus-resinosa-and-is-269-years-old.-the-linear-growth-increment-is-0.37mm-and-the-inside-bark-radius-was-308.84mm." class="level2">
+<h2 class="anchored" data-anchor-id="the-oldest-tree-is-treeid-24-in-standid-2-with-stand-a2-in-year-2007.-it-is-a-pinus-resinosa-and-is-269-years-old.-the-linear-growth-increment-is-0.37mm-and-the-inside-bark-radius-was-308.84mm.">The oldest tree is treeID 24 in standID 2, with stand A2 in year 2007. It is a Pinus resinosa and is 269 years old. The linear growth increment is 0.37mm and the inside bark radius was 308.84mm.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#6</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2001</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> age, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  treeID standID stand year species age   inc  rad_ib
+1     24       2    A2 2001    PIRE 263 0.210 306.880
+2     25       2    A2 2001    PIRE 259 0.280 156.210
+3   1595      24    F1 2001    FRNI 212 0.579 156.267
+4   1598      24    F1 2001    FRNI 206 0.394 130.251
+5   1712      26    F3 2001    FRNI 206 0.168 154.354</code></pre>
+</div>
+</div>
+</section>
+<section id="the-five-oldest-trees-in-2001-are-shown-in-the-table-above" class="level2">
+<h2 class="anchored" data-anchor-id="the-five-oldest-trees-in-2001-are-shown-in-the-table-above">The five oldest trees in 2001 are shown in the table above</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#7</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2002</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    treeID standID stand year species age   inc    rad_ib
+1      431       8    B3 2002    PIBA  23 1.585  74.22500
+2     1277      20    D6 2002    PIMA  56 0.920 112.03320
+3     1500      23    E3 2002    QURU  72 0.530  81.49000
+4     1068      16    D2 2002    ABBA 121 0.375  78.36385
+5     1369      20    D6 2002    PIMA  68 0.715  65.21220
+6     2235      35    H6 2002    PIGL  27 1.094  75.67900
+7     2176      34    H5 2002    BEPA  79 0.692 123.16200
+8     1523      23    E3 2002    QURU  75 0.590  75.73500
+9      725      11    B6 2002    PIMA  75 0.630  60.56940
+10    1587      24    F1 2002    FRNI 135 0.363  59.12700
+11    2086      33    H4 2002    BEPA  70 0.666  79.64300
+12    2111      33    H4 2002    ACRU  84 0.545  69.39500
+13    1242      20    D6 2002    PIMA  65 0.715  73.35260
+14     801      12    C1 2002    ABBA  26 1.580  55.76025
+15     759      11    B6 2002    PIMA  74 0.225  70.36480
+16    1132      18    D4 2002    PIMA 112 0.030  56.34140
+17     997      14    C3 2002    POTR  78 0.155 144.34000
+18     517       8    B3 2002    PIBA  25 0.685  65.02800
+19    2006      32    H3 2002    BEPA  59 0.000  72.95000
+20    2103      33    H4 2002    PIGL  56 0.973  71.96900
+21    1616      25    F2 2002    FRNI  50 0.629  72.70500
+22     560       9    B4 2002    BEPA  70 1.385 114.88900
+23    1645      25    F2 2002    FRNI  73 0.688  76.74100
+24     852      12    C1 2002    PIMA  87 1.080  64.44360
+25     379       7    B2 2002    PIBA  24 0.335  56.58800
+26     419       8    B3 2002    PIBA  25 0.835  78.66500
+27    2061      33    H4 2002    ABBA  39 0.898  75.79250
+28    2229      35    H6 2002    PIGL  29 1.089  70.50300
+29     860      12    C1 2002    ABBA  23 0.650  45.08970
+30     816      12    C1 2002    ABBA  13 1.915  34.36960
+31    1572      24    F1 2002    FRNI  95 0.406  86.56600
+32     320       7    B2 2002    PIRE  21 1.785  53.28000
+33    1541      23    E3 2002    QURU  58 1.080  79.59500
+34     609      10    B5 2002    PIBA  55 0.770 108.33000
+35     382       7    B2 2002    PIBA  25 0.410  89.85400
+36    2253      35    H6 2002    PIGL  25 0.481  70.19800
+37     718      11    B6 2002    PIBA  70 1.935 140.25200
+38     806      12    C1 2002    ABBA  26 1.420  48.00635
+39     578       9    B4 2002    PIBA 101 0.955 135.60800
+40    1434      21    E1 2002    ACRU  64 0.724  58.49300
+41    1048      15    D1 2002    THOC 109 0.525  83.47000
+42     425       8    B3 2002    PIBA  25 0.370  63.76500
+43    1865      30    H1 2002    ACRU  67 0.970  60.89500
+44    1281      20    D6 2002    PIMA  56 0.355  55.77500
+45     906      12    C1 2002    POTR  17 0.310  49.16500
+46    1191      18    D4 2002    PIMA  36 0.180  52.63660
+47    2079      33    H4 2002    ABBA  37 0.516  60.55965
+48    1407      21    E1 2002    ACRU  48 0.744  42.62000
+49     692      10    B5 2002    PIBA  55 0.290  53.41200
+50    1035      15    D1 2002    THOC 178 0.315 133.62500
+51    1422      21    E1 2002    QURU  56 0.780  53.05500
+52    1933      31    H2 2002    ABBA  54 2.605  41.54920
+53     172       6    B1 2002    BEPA  43 0.290  75.39000
+54    1988      32    H3 2002    BEPA  75 0.000  75.55800
+55     142       5    A6 2002    ABBA  43 0.965  50.10165
+56    2082      33    H4 2002    ABBA  42 0.793  61.63425
+57    1126      18    D4 2002    PIMA 101 0.120  47.43600
+58     269       6    B1 2002    PIMA  44 0.410  82.26220
+59    1880      30    H1 2002    POGR  69 0.545 125.51000
+60    1584      24    F1 2002    BEPA  36 0.116  54.46500
+61     601      10    B5 2002    PIBA  56 1.040 123.01400
+62     897      12    C1 2002    PIBA  13 2.055  36.48300
+63     335       7    B2 2002    PIBA  26 0.990  52.21100
+64     677      10    B5 2002    PIBA  54 0.415 119.14700
+65    1232      19    D5 2002    PIMA  74 0.110  51.76180
+66    1662      25    F2 2002    FRNI  57 0.627  81.35100
+67     306       7    B2 2002    PIBA  27 0.420  78.81400
+68     696      10    B5 2002    PIBA  47 0.430  57.00500
+69    2019      32    H3 2002    POGR  72 0.975 103.67500
+70    1526      23    E3 2002    QURU  72 0.910  65.84000
+71    1910      30    H1 2002    ACRU  57 0.208  46.55400
+72     794      12    C1 2002    BEPA  58 0.545  58.54700
+73    2009      32    H3 2002    BEPA  76 0.125  65.67500
+74     307       7    B2 2002    PIBA  27 0.100  56.28400
+75     887      12    C1 2002    ABBA  15 1.680  41.84195
+76    1548      24    F1 2002    ABBA  30 1.418  48.53215
+77      68       3    A4 2002    PIST  35 2.870 101.17000
+78      72       4    A5 2002    ABBA  32 1.050  47.22135
+79    1042      15    D1 2002    THOC 166 0.000  53.20000
+80    1251      20    D6 2002    PIMA  62 0.470  77.08500
+81    1121      18    D4 2002    PIMA  61 0.190  49.06820
+82     158       5    A6 2002    PIRE  79 1.850 177.67500
+83    1380      20    D6 2002    PIMA  64 0.595  66.51360
+84     101       4    A5 2002    BEPA 123 0.960 111.80700
+85     963      13    C2 2002    ABBA  29 0.960  59.04045
+86     663      10    B5 2002    PIMA  48 0.455  50.44420
+87     937      13    C2 2002    ABBA  23 0.710  43.68725
+88    1612      25    F2 2002    FRNI  48 0.260  66.58800
+89    1298      20    D6 2002    PIMA  64 0.225  85.41060
+90    2074      33    H4 2002    BEPA  88 0.307  94.94300
+91    2035      32    H3 2002    BEPA  70 0.000  82.56000
+92    1040      15    D1 2002    PIMA 109 0.485  80.58100
+93     941      13    C2 2002    ABBA  16 1.615  38.57990
+94    1411      21    E1 2002    PIGL  18 1.300  51.32000
+95    1869      30    H1 2002    ACRU  77 0.570  59.47500
+96     626      10    B5 2002    PIBA  51 1.365  94.43100
+97    2106      33    H4 2002    ABBA  44 1.434  46.91495
+98    1724      27    G1 2002    ACSA 104 0.085 118.12500
+99     638      10    B5 2002    PIBA  55 1.315 112.83000
+100   1466      22    E2 2002    QURU  86 1.245  66.46500
+101    910      13    C2 2002    ABBA  35 0.670  70.32700
+102   1303      20    D6 2002    PIMA  68 0.330  65.82140
+103    235       6    B1 2002    PIBA  36 0.780  71.49800
+104   1386      21    E1 2002    ACRU  34 1.383  46.76900
+105   1274      20    D6 2002    PIMA  56 0.870  84.43140
+106    953      13    C2 2002    POTR  23 0.735  44.26500
+107    868      12    C1 2002    ABBA  20 1.670  58.86780
+108   1308      20    D6 2002    PIMA  54 0.815  82.05800
+109    371       7    B2 2002    PIBA  28 0.095  50.11700
+110     98       4    A5 2002    BEPA  52 1.420  47.19000
+111    748      11    B6 2002    PIBA  80 1.130 112.41700
+112   1023      15    D1 2002    THOC 140 0.275  95.46000
+113   2244      35    H6 2002    POTR  66 0.106 124.16500
+114   1030      15    D1 2002    PIMA  38 1.205  58.48620
+115    234       6    B1 2002    PIBA  36 0.290  62.14200
+116    398       7    B2 2002    PIRE  26 0.530  76.05000
+117   1858      29    G3 2002    ACSA  83 0.345  87.12500
+118   1914      30    H1 2002    ACRU  65 1.132  72.08300
+119    984      14    C3 2002    PIGL  54 0.475  60.31600
+120   1452      22    E2 2002    ABBA  23 1.200  47.89430
+121   2067      33    H4 2002    BEPA  83 0.566 144.85200
+122   1755      28    G2 2002    ACSA  53 0.325  72.92000
+123   1691      26    F3 2002    FRNI  74 0.418  81.46200
+124    263       6    B1 2002    PIMA  35 0.420  48.66700
+125   1148      18    D4 2002    PIMA  54 0.295  51.47920
+126    313       7    B2 2002    PIBA  21 0.000  53.17200
+127   2139      34    H5 2002    ABBA  47 0.381  46.91870
+128     12       1    A1 2002    BEPA 120 1.215 127.28600
+129    956      13    C2 2002    ABBA  17 1.655  36.92000
+130    366       7    B2 2002    PIBA  24 0.385  49.99100
+131   2271      35    H6 2002    PIGL  22 0.861  38.33400
+132   1020      15    D1 2002    PIMA  37 0.465  43.14360
+133     55       3    A4 2002    PIST  71 2.310 119.90000
+134    216       6    B1 2002    POTR  61 0.295 104.19500
+135    670      10    B5 2002    BEPA  59 1.020  62.90500
+136   1600      24    F1 2002    FRNI 197 0.650 152.17900
+137    752      11    B6 2002    PIBA  80 0.550 135.98300
+138     51       3    A4 2002    PIGL  73 0.090 138.46600
+139    779      12    C1 2002    ABBA  17 1.635  39.06685
+140    712      11    B6 2002    ABBA  58 0.345  75.45405
+141   1254      20    D6 2002    PIMA  59 0.250  58.19240
+142   2265      35    H6 2002    POTR  41 0.120 117.44200
+143   1193      18    D4 2002    PIMA 131 0.000  60.65220
+144    817      12    C1 2002    ABBA  12 1.800  32.28735
+145   1309      20    D6 2002    PIMA  63 0.495  66.60760
+146    704      10    B5 2002    PIMA  78 0.375 101.25880
+147   1669      26    F3 2002    ACSA  38 0.080  46.10000
+148    447       8    B3 2002    ABBA  22 1.605  47.31870
+149   1237      20    D6 2002    PIMA  70 0.310 123.82400
+150    531       9    B4 2002    BEPA  76 0.655  58.17900
+151    879      12    C1 2002    ABBA  13 2.335  41.54165
+152   1922      30    H1 2002    ACSA  66 0.383  68.38700
+153    433       8    B3 2002    PIBA  24 1.520  74.46600
+154   1066      16    D2 2002    ABBA  57 1.125  45.51155
+155   2195      34    H5 2002    ABBA  29 1.249  42.16420
+156   1103      17    D3 2002    ABBA  47 1.160  35.67745
+157   1817      29    G3 2002    ACSA  76 0.210 112.67000
+158    571       9    B4 2002    BEPA  38 3.620  71.51900
+159   1140      18    D4 2002    PIMA  62 0.115  61.24200
+160   1323      20    D6 2002    PIMA  61 0.380  73.76780
+161    481       8    B3 2002    ABBA  18 1.695  46.71605
+162   1316      20    D6 2002    PIMA  62 0.100  63.54300
+163   1538      23    E3 2002    QURU  56 0.940  60.11000
+164   2258      35    H6 2002    PIGL  20 1.321  48.81800
+165    339       7    B2 2002    PIBA  23 0.960  81.40900
+166   1149      18    D4 2002    PIMA  47 0.435  47.14820
+167   1297      20    D6 2002    PIMA  63 0.375  78.89000
+168    667      10    B5 2002    PIMA  48 0.830  65.92120
+169    623      10    B5 2002    PIBA  54 0.815  86.72000
+170   1363      20    D6 2002    PIMA  62 0.530  95.67420
+171   1456      22    E2 2002    QURU  84 1.180  86.57000
+172   1978      31    H2 2002    BEPA  47 0.716 133.19300
+173    127       5    A6 2002    PIST  77 1.285 190.08500
+174   2228      35    H6 2002    PIGL  75 0.907  57.28800
+175   2219      35    H6 2002    PIGL  23 1.397  82.00800
+176    249       6    B1 2002    PIBA  36 0.790  81.49100
+177    693      10    B5 2002    PIBA  48 0.735  66.67700
+178   1800      28    G2 2002    ACSA  68 0.055  90.04500
+179    741      11    B6 2002    PIMA  34 1.535  46.88400
+180    207       6    B1 2002    PIBA  41 1.925 106.17100
+181    745      11    B6 2002    ABBA  25 0.830  55.66595
+182    231       6    B1 2002    PIBA  36 0.875  71.59400
+183    187       6    B1 2002    PIMA  54 0.505  87.36400
+184    606      10    B5 2002    PIBA  57 1.205 116.70200
+185    987      14    C3 2002    POTR  77 0.055  95.13500
+186   2053      33    H4 2002    ABBA  44 1.347  50.69225
+187   1980      31    H2 2002    POTR  56 1.771 208.87800
+188   1321      20    D6 2002    PIMA  64 0.265  58.47980
+189    361       7    B2 2002    PIBA  24 1.075  90.83100
+190   1547      24    F1 2002    ABBA  39 1.787  67.08445
+191   1212      19    D5 2002    LALA  73 0.270  51.19370
+192   1677      26    F3 2002    FRNI 129 0.194  88.67400
+193    802      12    C1 2002    ABBA  24 1.990  46.34390
+194    732      11    B6 2002    PIBA  76 1.135 148.47900
+195    917      13    C2 2002    ABBA  16 2.230  39.96920
+196    840      12    C1 2002    ABBA  17 1.775  49.24370
+197   1467      22    E2 2002    QURU  86 0.950  61.19500
+198     60       3    A4 2002    PIST  66 2.130 104.58500
+199    440       8    B3 2002    PIBA  25 1.525  83.21500
+200   1245      20    D6 2002    PIMA  60 0.850  61.21280
+201   1697      26    F3 2002    FRNI  59 0.434  61.82600
+202    619      10    B5 2002    ABBA  49 0.710  58.85350
+203   1102      17    D3 2002    ABBA  51 0.650  45.93195
+204   2151      34    H5 2002    BEPA  72 0.271  61.54200
+205    156       5    A6 2002    PIRE  73 2.155 174.51000
+206   2078      33    H4 2002    ABBA  48 1.028  59.34355
+207    150       5    A6 2002    PIMA  75 0.495 136.79880
+208    797      12    C1 2002    PIBA  11 3.195  64.82400
+209     71       3    A4 2002    POTR  79 0.245 146.85000
+210   2112      33    H4 2002    ACRU  86 0.102  54.24100
+211   2042      32    H3 2002    BEPA  75 0.195  76.80500
+212    763      12    C1 2002    ABBA  13 2.125  42.82890
+213    256       6    B1 2002    PIMA  47 0.875  97.93020
+214   1833      29    G3 2002    ACSA  64 0.200  94.66000
+215   2267      35    H6 2002    POTR  62 0.507 137.20400
+216   2024      32    H3 2002    POTR  81 0.350  94.57000
+217    539       9    B4 2002    BEPA  56 0.215  56.63200
+218      8       1    A1 2002    ABBA  36 0.875  38.35000
+219   1592      24    F1 2002    FRNI  70 0.983  58.34900
+220   1948      31    H2 2002    POTR  49 2.635 159.05800
+221   2214      34    H5 2002    PIMA  37 1.340  80.53400
+222   2068      33    H4 2002    BEPA  85 0.086  88.19900
+223   2021      32    H3 2002    POGR  72 0.420  99.10500
+224    438       8    B3 2002    PIBA  22 1.125  71.31000
+225    841      12    C1 2002    ABBA  18 1.335  40.61745
+226   1403      21    E1 2002    ABBA  21 1.325  39.07450
+227   1851      29    G3 2002    ACSA  79 0.009 107.11700
+228   1177      18    D4 2002    PIMA 101 0.040  55.47780
+229    994      14    C3 2002    ABBA  32 2.615  79.73480
+230    723      11    B6 2002    PIMA  55 0.215  91.06140
+231    582      10    B5 2002    ABBA  38 0.830  46.79675
+232   1959      31    H2 2002    POTR  66 0.345 124.04500
+233   1335      20    D6 2002    PIMA  68 0.555  97.48540
+234    387       7    B2 2002    PIRE  20 1.520  76.64500
+235   2060      33    H4 2002    ABBA  35 1.184  50.19545
+236     48       3    A4 2002    PIGL  66 0.500 175.10200
+237   1931      30    H1 2002    QURU  74 0.672 120.03900
+238     84       4    A5 2002    PIST 106 1.475 136.06500
+239    850      12    C1 2002    ABBA  16 2.105  38.32685
+240    120       4    A5 2002    PIST 100 1.435 199.80000
+241   1859      29    G3 2002    ACSA  77 0.395 139.53000
+242   2200      34    H5 2002    BEPA  67 0.351  88.34900
+243   1635      25    F2 2002    FRNI  67 0.796  99.87400
+244    662      10    B5 2002    PIGL  54 0.480  61.23200
+245     65       3    A4 2002    PIST  60 0.140  79.08500
+246   1994      32    H3 2002    BEPA  75 0.345  53.69300
+247    585      10    B5 2002    BEPA  60 1.930  57.06300
+248   1566      24    F1 2002    FRNI  65 0.507  78.97300
+249    575       9    B4 2002    PIBA  93 0.355 153.50000
+250    167       6    B1 2002    BEPA  57 0.040  55.11800
+251   1164      18    D4 2002    PIMA 127 0.405  57.89960
+252   2270      35    H6 2002    PIGL  58 0.701 169.62000
+253    471       8    B3 2002    PIBA  21 2.175  96.57700
+254   2205      34    H5 2002    BEPA  77 0.330  55.44900
+255   2127      33    H4 2002    BEPA  79 0.275  97.10700
+256    144       5    A6 2002    ABBA  47 0.310  49.96940
+257    350       7    B2 2002    PIRE  30 2.330  79.76500
+258   2100      33    H4 2002    BEPA  90 0.501 120.17200
+259    400       7    B2 2002    POTR  31 0.305  52.24000
+260   1879      30    H1 2002    POGR  81 1.170 163.27500
+261   1317      20    D6 2002    PIMA  65 0.285  84.12700
+262    665      10    B5 2002    PIMA  45 0.725  53.50740
+263    285       7    B2 2002    PIBA  28 0.665  70.49600
+264   1929      30    H1 2002    BEPA  90 1.289 109.65600
+265   2016      32    H3 2002    BEPA  75 0.025  73.93200
+266   1017      15    D1 2002    PIMA  39 0.890  65.70820
+267    814      12    C1 2002    ABBA  23 1.960  60.20710
+268   2147      34    H5 2002    BEPA  66 0.007  55.88300
+269   1336      20    D6 2002    PIMA  56 0.505  59.05700
+270   1151      18    D4 2002    PIMA  62 0.135  58.13480
+271   1717      27    G1 2002    ACSA  84 0.495 160.36500
+272     49       3    A4 2002    PIGL  62 0.845 166.48700
+273   2203      34    H5 2002    BEPA  74 0.200 108.94100
+274   1123      18    D4 2002    PIMA  59 0.315  60.12440
+275    717      11    B6 2002    PIBA  80 0.060  90.67800
+276   1532      23    E3 2002    QURU  72 0.670  65.29500
+277   1775      28    G2 2002    ACRU  75 0.695 112.98500
+278   2207      34    H5 2002    BEPA  77 0.014  50.16100
+279   1285      20    D6 2002    PIMA  58 0.510  65.32760
+280   2069      33    H4 2002    BEPA  90 0.350  90.46900
+281   1326      20    D6 2002    PIMA  70 0.000  52.10560
+282    936      13    C2 2002    ABBA  25 2.210  72.87080
+283   1339      20    D6 2002    PIMA  67 0.000  63.02820
+284    563       9    B4 2002    PIMA  67 0.770 106.53680
+285   1392      21    E1 2002    QURU  64 1.175  73.83500
+286    612      10    B5 2002    PIBA  52 0.440  70.73600
+287    356       7    B2 2002    POTR  27 0.305  60.61500
+288   2255      35    H6 2002    PIGL  24 1.776  50.81200
+289   2281      35    H6 2002    PIMA  37 0.238  47.57640
+290   1024      15    D1 2002    THOC 179 0.635 150.40000
+291    813      12    C1 2002    ABBA  27 1.915  49.25035
+292   1852      29    G3 2002    ACSA  79 0.430  91.21500
+293    375       7    B2 2002    PIBA  27 0.510  53.05700
+294   2020      32    H3 2002    POGR  68 0.775 126.16500
+295   1597      24    F1 2002    FRNI 149 0.489 125.53600
+296   1941      31    H2 2002    ABBA  26 1.335  43.93665
+297   1807      28    G2 2002    ACSA  68 0.200  60.13500
+298    330       7    B2 2002    PIBA  26 0.340 102.79000
+299   1295      20    D6 2002    PIMA  72 0.000  52.42560
+300   1292      20    D6 2002    PIMA  77 0.570  95.75940
+301   1921      30    H1 2002    ACSA  74 0.421  47.41500
+302   1135      18    D4 2002    PIMA  28 0.000  48.60700
+303    535       9    B4 2002    BEPA  59 1.465  76.75600
+304    512       8    B3 2002    PIBA  27 0.630  89.59300
+305   2274      35    H6 2002    PIGL  27 0.828  36.89400
+306   1927      30    H1 2002    BEPA  81 0.000 171.40700
+307   1586      24    F1 2002    FRNI 144 0.414 122.63500
+308   2126      33    H4 2002    BEPA  81 0.275  85.99800
+309    921      13    C2 2002    ACRU  48 1.665  99.26000
+310   1617      25    F2 2002    FRNI  62 0.121  45.59900
+311    624      10    B5 2002    PIBA  49 0.200  73.69800
+312   1314      20    D6 2002    PIMA  63 0.420  55.45620
+313   1279      20    D6 2002    PIMA  68 0.385  46.28600
+314   1690      26    F3 2002    FRNI  62 0.634  58.88800
+315    488       8    B3 2002    PIBA  24 1.345  86.19600
+316   1264      20    D6 2002    PIMA  63 0.240  73.95180
+317    454       8    B3 2002    PIBA  22 2.145  99.95300
+318   1727      27    G1 2002    ACSA  93 0.107 100.04300
+319   1975      31    H2 2002    ACRU  43 1.132  57.00000
+320   1171      18    D4 2002    PIMA 154 0.315  59.17340
+321   1639      25    F2 2002    FRNI  82 0.276 123.39300
+322   1026      15    D1 2002    THOC 128 0.300  64.29000
+323   1555      24    F1 2002    ABBA  35 1.297  60.72650
+324    115       4    A5 2002    BEPA  57 1.220  81.16800
+325    870      12    C1 2002    ABBA  14 1.815  37.24685
+326   1610      25    F2 2002    FRNI  68 0.448  91.93700
+327    530       9    B4 2002    BEPA  68 1.235  57.86100
+328   1497      23    E3 2002    QURU  49 0.500  48.69000
+329    706      10    B5 2002    PIMA  53 0.275  65.63400
+330   1356      20    D6 2002    PIMA  68 0.335 100.86260
+331    882      12    C1 2002    ABBA  16 1.890  41.45665
+332   1291      20    D6 2002    PIMA  81 0.355  95.61200
+333   1629      25    F2 2002    FRNI  78 0.717 107.90700
+334   1698      26    F3 2002    FRNI  83 0.214  49.57800
+335   2186      34    H5 2002    PIMA  37 0.065  61.27560
+336   1826      29    G3 2002    ACSA  66 0.190  57.84000
+337   1006      14    C3 2002    PIGL  62 0.160  90.60300
+338    487       8    B3 2002    PIBA  26 1.275  57.95300
+339    202       6    B1 2002    PIBA  40 0.065  72.47600
+340   1495      23    E3 2002    ACRU  64 1.150  59.11000
+341   1156      18    D4 2002    PIMA  59 0.210  47.75960
+342    675      10    B5 2002    BEPA  58 0.430  47.18900
+343    463       8    B3 2002    PIBA  22 1.360  79.83300
+344   1246      20    D6 2002    PIMA  69 0.180  61.51440
+345   1863      29    G3 2002    ACSA  65 0.360  63.41500
+346    200       6    B1 2002    PIBA  37 0.765  97.80100
+347   1872      30    H1 2002    ACSA  67 1.235  58.94500
+348   1718      27    G1 2002    ACSA 112 0.125 101.96000
+349    462       8    B3 2002    PIBA  27 1.935  68.86200
+350    895      12    C1 2002    PIBA  12 1.615  43.20600
+351   1018      15    D1 2002    PIMA  34 0.780  44.57300
+352    634      10    B5 2002    PIBA  53 1.130  82.25500
+353     41       3    A4 2002    PIST  69 2.240 140.48000
+354    389       7    B2 2002    PIRE  19 1.595  55.91000
+355    153       5    A6 2002    PIMA  65 1.365 120.50880
+356   1574      24    F1 2002    FRNI 123 1.158  76.59200
+357   1464      22    E2 2002    QURU  75 0.395  60.56000
+358   1854      29    G3 2002    ACSA  62 0.200 100.97000
+359    509       8    B3 2002    PIBA  27 0.925  85.95600
+360   1221      19    D5 2002    PIMA  90 0.115  51.21440
+361    978      14    C3 2002    PIGL  54 0.575  89.93100
+362    302       7    B2 2002    PIBA  28 0.450  82.86200
+363    932      13    C2 2002    ABBA  29 0.980  63.71015
+364    758      11    B6 2002    PIBA  82 0.740  69.37600
+365   2148      34    H5 2002    BEPA  76 0.103  95.25300
+366   1354      20    D6 2002    PIMA  65 1.045  58.35820
+367    483       8    B3 2002    PIBA  25 0.970  86.33900
+368    262       6    B1 2002    PIMA  31 0.415  46.63860
+369    614      10    B5 2002    PIMA  46 0.670  49.16800
+370    647      10    B5 2002    PIBA  56 1.185 106.96200
+371    863      12    C1 2002    ABBA  15 1.710  44.56440
+372   1818      29    G3 2002    ACSA  78 0.015  80.39500
+373    982      14    C3 2002    PIGL  50 0.545 121.82400
+374   2256      35    H6 2002    PIGL  25 0.976  62.26100
+375   1152      18    D4 2002    PIMA  61 0.305  49.44700
+376   1429      21    E1 2002    QURU  58 0.290  54.96500
+377   1930      30    H1 2002    QURU  74 0.518 101.68100
+378    773      12    C1 2002    ABBA  13 1.155  37.89725
+379   1181      18    D4 2002    PIMA  37 0.385  47.67320
+380    772      12    C1 2002    ABBA  16 1.190  41.32215
+381    175       6    B1 2002    PIBA  36 1.865 107.22500
+382   1304      20    D6 2002    PIMA  62 0.520  81.09820
+383   1289      20    D6 2002    PIMA  72 0.130  73.24580
+384   1505      23    E3 2002    QURU  37 0.985  44.26000
+385   1544      23    E3 2002    QURU  28 1.555  48.59500
+386    336       7    B2 2002    PIBA  20 0.315  48.94900
+387   1185      18    D4 2002    PIMA  51 0.150  65.09400
+388    186       6    B1 2002    PIMA  31 1.320  40.15100
+389    630      10    B5 2002    PIBA  56 1.280  81.03500
+390    177       6    B1 2002    PIBA  30 2.905 103.50400
+391   1535      23    E3 2002    QURU  82 1.135 112.40500
+392   1530      23    E3 2002    QURU  30 1.485  43.49500
+393    304       7    B2 2002    PIBA  19 0.140  75.67400
+394     54       3    A4 2002    PIST  69 0.805  54.42500
+395   2152      34    H5 2002    BEPA  78 0.373  75.58500
+396    211       6    B1 2002    PIMA  40 0.745  78.90600
+397    278       6    B1 2002    PIMA  33 0.140  58.79740
+398    226       6    B1 2002    PIBA  32 0.850  69.06300
+399    949      13    C2 2002    PIBA  81 1.035 163.68000
+400    240       6    B1 2002    PIBA  38 1.030  97.27700
+401   1113      18    D4 2002    LALA  24 1.090  44.55175
+402    581      10    B5 2002    ABBA  46 0.885  40.76735
+403    920      13    C2 2002    ABBA  27 1.150  45.73705
+404   1527      23    E3 2002    QURU  82 0.530  82.02500
+405    637      10    B5 2002    PIBA  54 1.990 125.96200
+406   1618      25    F2 2002    FRNI  67 0.742  92.65600
+407   1064      16    D2 2002    THOC 126 0.630 115.97000
+408    181       6    B1 2002    PIBA  33 0.925  67.50600
+409    955      13    C2 2002    ABBA  21 2.250  59.65445
+410    966      13    C2 2002    ABBA  28 1.345  54.00320
+411   1977      31    H2 2002    BEPA  41 0.778 114.25200
+412   1460      22    E2 2002    QURU  87 1.075  87.94000
+413   1522      23    E3 2002    QURU  77 0.360  69.13000
+414   1076      17    D3 2002    ABBA  50 1.120  45.72900
+415   1658      25    F2 2002    FRNI  79 0.974 109.40300
+416    511       8    B3 2002    PIBA  26 0.775  72.27000
+417   2262      35    H6 2002    POTR  35 0.079  55.68700
+418    988      14    C3 2002    POTR  70 0.105 116.24000
+419    972      13    C2 2002    PIBA  84 0.575 143.81400
+420   2116      33    H4 2002    BEPA  81 0.343  99.91900
+421   1649      25    F2 2002    FRNI  81 0.656  67.64200
+422   1937      31    H2 2002    ABBA  52 0.745  70.12220
+423    163       6    B1 2002    BEPA  37 0.722  54.87100
+424   1133      18    D4 2002    PIMA  52 0.175  45.33240
+425   1385      21    E1 2002    ACRU  78 0.769  64.26600
+426    979      14    C3 2002    PIGL  59 0.955 154.75000
+427   1591      24    F1 2002    FRNI  78 0.422  59.77400
+428   1539      23    E3 2002    QURU  79 1.075  85.26500
+429    214       6    B1 2002    PIRE  30 1.900  53.84500
+430    902      12    C1 2002    POTR  20 0.335  36.65000
+431   1475      22    E2 2002    QURU  81 1.080  57.34000
+432   1276      20    D6 2002    PIMA  68 0.270  87.32420
+433    327       7    B2 2002    PIBA  24 1.615  68.64300
+434    960      13    C2 2002    ABBA  20 1.475  41.71215
+435   1200      19    D5 2002    PIMA  88 0.410  64.81900
+436   1127      18    D4 2002    PIMA  82 0.210  46.19480
+437    649      10    B5 2002    PIBA  55 0.395  63.38500
+438   1733      27    G1 2002    ACRU 104 0.320  87.75000
+439    673      10    B5 2002    BEPA  61 0.260  53.73500
+440   1391      21    E1 2002    QURU  53 0.825  71.95500
+441   1072      17    D3 2002    ABBA  49 1.205  42.34695
+442   1001      14    C3 2002    PIGL  50 0.800  84.17700
+443    140       5    A6 2002    ABBA  79 0.690  73.10700
+444   1952      31    H2 2002    ABBA  50 0.365  88.05775
+445   1804      28    G2 2002    ACSA  59 0.235  47.31500
+446   1310      20    D6 2002    PIMA  69 0.135  78.79400
+447   2011      32    H3 2002    BEPA  73 0.000  76.79200
+448   2076      33    H4 2002    ABBA  32 1.321  43.37015
+449      4       1    A1 2002    BEPA 114 0.695  61.80100
+450   1707      26    F3 2002    BEPA  33 0.765  65.87300
+451    314       7    B2 2002    PIBA  23 1.015  81.08900
+452   1704      26    F3 2002    ACSA  62 0.350  45.33000
+453    698      10    B5 2002    PIBA  51 0.295 108.41900
+454    107       4    A5 2002    PIST 102 0.935 103.20000
+455    782      12    C1 2002    ABBA  12 1.670  34.94970
+456    297       7    B2 2002    PIBA  26 0.870  69.95400
+457   1437      21    E1 2002    ACRU  78 0.639  54.26900
+458   1613      25    F2 2002    FRNI  80 0.787 103.67400
+459   1517      23    E3 2002    QURU  79 1.045  80.69000
+460   1748      28    G2 2002    ACSA  57 0.000  79.47500
+461    636      10    B5 2002    PIBA  55 0.565  90.35400
+462    778      12    C1 2002    ABBA  16 1.695  70.34365
+463    112       4    A5 2002    ABBA  47 0.945  59.39535
+464   2238      35    H6 2002    PIGL  28 1.276  64.73300
+465   1871      30    H1 2002    ACSA  65 0.450  57.09400
+466   2161      34    H5 2002    POTR  75 0.226  90.92300
+467    701      10    B5 2002    PIMA  52 0.825  49.78140
+468   1796      28    G2 2002    ACSA  72 0.520  91.19500
+469   1641      25    F2 2002    FRNI  68 0.272  88.00700
+470   2143      34    H5 2002    ABBA  84 1.298  37.08490
+471    228       6    B1 2002    PIBA  28 0.690  74.31800
+472     80       4    A5 2002    BEPA 121 0.570 130.64400
+473    246       6    B1 2002    PIBA  32 0.895  65.24900
+474   1890      30    H1 2002    ACSA  77 0.096  68.90900
+475   2001      32    H3 2002    POGR  60 0.790  85.47500
+476   2173      34    H5 2002    BEPA  81 0.269  94.29600
+477   1805      28    G2 2002    ACSA  67 0.410  74.96500
+478   1891      30    H1 2002    ACSA  72 0.502  60.01000
+479    835      12    C1 2002    ABBA  16 1.555  45.16400
+480   2185      34    H5 2002    PIMA  74 0.177  95.03000
+481   2158      34    H5 2002    BEPA  50 0.645  54.25600
+482   1486      22    E2 2002    QURU  80 0.635  65.88000
+483     13       1    A1 2002    ABBA  57 0.520  68.91720
+484   1960      31    H2 2002    POTR  68 0.748 120.10600
+485    443       8    B3 2002    PIBA  22 1.445  77.06000
+486   1014      15    D1 2002    PIMA  59 0.245 113.32760
+487   1435      21    E1 2002    ACRU  64 0.553  63.74000
+488    192       6    B1 2002    BEPA  43 0.090  52.61600
+489    354       7    B2 2002    POTR  29 0.550  71.51500
+490   1061      16    D2 2002    ABBA  58 0.340  51.09175
+491   1070      16    D2 2002    BEPA 110 0.119  87.04000
+492   1368      20    D6 2002    PIMA  70 0.185  58.52600
+493    452       8    B3 2002    PIBA  22 1.165  61.23600
+494   2087      33    H4 2002    BEPA  88 0.226 109.95300
+495    734      11    B6 2002    PIBA  80 0.235 124.00200
+496    518       8    B3 2002    PIBA  28 1.160  90.54600
+497   1938      31    H2 2002    ABBA  57 0.620  51.29400
+498   1676      26    F3 2002    FRNI  37 0.438  45.37100
+499    409       8    B3 2002    PIBA  22 1.440  85.06200
+500   1478      22    E2 2002    ABBA  19 1.835  46.91175
+501   1509      23    E3 2002    QURU  49 1.385  53.41000
+502   1841      29    G3 2002    ACSA  70 0.330  90.03000
+503   1322      20    D6 2002    PIMA  65 0.645  67.61100
+504    444       8    B3 2002    PIMA  26 0.780  72.04800
+505    237       6    B1 2002    PIBA  33 0.095  85.62800
+506   2254      35    H6 2002    PIGL  22 1.540  49.12000
+507    494       8    B3 2002    PIBA  24 0.880  75.73600
+508    826      12    C1 2002    ABBA  16 3.055  60.38710
+509   2083      33    H4 2002    ABBA  43 0.894  60.74890
+510    947      13    C2 2002    ACRU  44 1.245  67.22000
+511   1153      18    D4 2002    PIMA  66 0.180  53.10780
+512    290       7    B2 2002    PIBA  26 0.205  47.78800
+513    880      12    C1 2002    ABBA  12 2.235  46.18565
+514    536       9    B4 2002    BEPA  53 1.525  87.02300
+515   1873      30    H1 2002    ACSA  69 0.450  45.76500
+516   2264      35    H6 2002    POTR  33 0.201  91.60700
+517    918      13    C2 2002    ABBA  22 1.895  64.48690
+518   1946      31    H2 2002    POTR  59 0.145 146.00000
+519   1360      20    D6 2002    PIMA  73 0.500  86.50900
+520   1459      22    E2 2002    QURU  84 0.775  74.92000
+521   1270      20    D6 2002    PIMA  75 0.410  83.84560
+522    871      12    C1 2002    ABBA  14 3.075  58.29415
+523    962      13    C2 2002    ABBA  20 2.460  50.00615
+524    174       6    B1 2002    BEPA 121 0.130  97.30800
+525   1205      19    D5 2002    PIMA  90 0.135  51.72060
+526   1112      17    D3 2002    THOC 145 1.440 166.12500
+527   1760      28    G2 2002    ACSA  53 0.120 109.87500
+528   2032      32    H3 2002    ACRU  33 0.790  44.49000
+529   1220      19    D5 2002    PIMA 152 0.055  46.99240
+530    364       7    B2 2002    PIBA  27 1.345  63.26500
+531    552       9    B4 2002    PIGL  35 1.550 109.94600
+532   1443      21    E1 2002    QURU  37 1.224  43.56600
+533   1469      22    E2 2002    ABBA  19 2.125  43.55195
+534   2050      33    H4 2002    ABBA  51 0.519  65.51070
+535    426       8    B3 2002    PIBA  25 0.815  73.05500
+536   1998      32    H3 2002    POGR  72 0.700 119.37500
+537   1490      22    E2 2002    QURU  85 0.905  77.23500
+538    395       7    B2 2002    PIRE  27 1.985 108.20000
+539    404       8    B3 2002    PIBA  23 0.440  68.53300
+540    448       8    B3 2002    ABBA  21 1.870  44.56695
+541   1995      32    H3 2002    POGR  69 1.010  90.80000
+542    754      11    B6 2002    PIBA  70 1.130 102.19800
+543    566       9    B4 2002    BEPA  45 0.340  58.75500
+544   1476      22    E2 2002    QURU  85 1.140 109.12000
+545   2259      35    H6 2002    PIGL  21 1.533  49.80700
+546   1294      20    D6 2002    PIMA  73 0.445 108.89680
+547   1272      20    D6 2002    PIMA  64 0.460  89.54500
+548   1644      25    F2 2002    FRNI  75 0.981  65.70400
+549   2189      34    H5 2002    PIMA  63 0.285 101.48500
+550    529       9    B4 2002    BEPA  60 0.660  52.74100
+551   1395      21    E1 2002    QURU  32 0.870  40.34500
+552   1965      31    H2 2002    ABBA  34 0.995  42.86980
+553    588      10    B5 2002    BEPA  60 1.250  71.59200
+554   1647      25    F2 2002    FRNI  74 0.213  60.44900
+555     64       3    A4 2002    PIST  70 0.360 137.87500
+556    365       7    B2 2002    PIBA  26 0.390  51.39000
+557    975      13    C2 2002    PIGL  54 0.525 102.61600
+558   1947      31    H2 2002    POTR  52 0.540 186.16000
+559   1745      28    G2 2002    ACSA  57 0.250  65.97500
+560    713      11    B6 2002    ABBA  50 3.560  38.80615
+561    449       8    B3 2002    ABBA  22 3.050  47.62810
+562   2028      32    H3 2002    ACRU  54 0.915  60.47500
+563   2000      32    H3 2002    POGR  70 1.420 115.83500
+564   1823      29    G3 2002    ACSA  76 0.275 128.73500
+565   1382      20    D6 2002    PIMA  69 0.360  92.81100
+566   2257      35    H6 2002    PIGL  29 2.318 122.34800
+567   1117      18    D4 2002    PIMA  26 0.310  41.84480
+568     94       4    A5 2002    ABBA  16 1.910  35.12215
+569    594      10    B5 2002    PIBA  55 0.230  91.73600
+570   1352      20    D6 2002    PIMA  63 0.210  77.12400
+571    283       7    B2 2002    PIBA  21 0.300  48.74300
+572   1908      30    H1 2002    ACRU  77 1.657  82.60500
+573   1806      28    G2 2002    ACSA  69 0.000  53.84000
+574    981      14    C3 2002    PIGL  57 0.080  75.24900
+575   1518      23    E3 2002    QURU  81 0.500  87.24000
+576    849      12    C1 2002    ABBA  20 1.410  54.61830
+577    719      11    B6 2002    PIBA  79 0.495 118.29000
+578   1228      19    D5 2002    PIMA  92 0.370  60.45580
+579   1405      21    E1 2002    ABBA  22 1.760  36.74225
+580   1709      26    F3 2002    FRNI 158 0.580 131.10300
+581    548       9    B4 2002    BEPA  85 0.795  69.27100
+582   1004      14    C3 2002    PIGL  51 0.405  65.75400
+583   1139      18    D4 2002    PIMA  66 0.105  57.85500
+584   2190      34    H5 2002    PIMA  34 0.868  68.76740
+585    577       9    B4 2002    PIBA  94 0.190 105.28000
+586    408       8    B3 2002    PIBA  22 1.970  96.58700
+587   1701      26    F3 2002    FRNI  65 0.637  91.55800
+588    931      13    C2 2002    ABBA  35 0.655  68.47455
+589   1410      21    E1 2002    ACRU  58 0.936  46.69000
+590   1503      23    E3 2002    QURU  58 0.665  61.80000
+591    800      12    C1 2002    ABBA  23 2.365  45.52870
+592   1312      20    D6 2002    PIMA  68 0.525  74.00300
+593   1648      25    F2 2002    FRNI  70 0.403  80.12900
+594    583      10    B5 2002    ABBA  51 0.155  47.14735
+595    168       6    B1 2002    BEPA  43 0.825  45.28500
+596    125       5    A6 2002    BEPA  66 0.455  92.88100
+597   2220      35    H6 2002    PIGL  23 1.762  41.25800
+598   2055      33    H4 2002    ABBA  34 1.940  62.31625
+599   2169      34    H5 2002    BEPA  77 0.109 100.06700
+600    727      11    B6 2002    ABBA  33 0.650  44.72980
+601   1659      25    F2 2002    FRNI  81 0.312 107.07700
+602   1834      29    G3 2002    ACSA  69 0.230 107.72000
+603   1444      21    E1 2002    QURU  32 0.211  47.85100
+604   1513      23    E3 2002    ACRU  73 0.300  49.10500
+605   2277      35    H6 2002    PIGL  27 1.350  59.71800
+606   1608      25    F2 2002    FRNI  64 0.328  80.70300
+607    737      11    B6 2002    PIMA  50 0.795  52.56480
+608   1507      23    E3 2002    QURU  55 1.200  56.51000
+609   2248      35    H6 2002    POTR  32 0.174  49.31200
+610   1244      20    D6 2002    PIMA  61 0.695  96.49780
+611    470       8    B3 2002    PIBA  26 1.420 106.23600
+612    787      12    C1 2002    BEPA  62 1.030  56.82800
+613   1468      22    E2 2002    QURU  85 0.705  59.30000
+614    338       7    B2 2002    PIBA  28 0.200  95.25500
+615    166       6    B1 2002    BEPA  47 0.945  64.21300
+616   1719      27    G1 2002    ACSA 115 0.110 108.52500
+617     66       3    A4 2002    PIST  71 0.385  88.22000
+618   1696      26    F3 2002    FRNI  80 0.552  88.95100
+619   1744      28    G2 2002    ACSA  55 0.135  62.51000
+620    765      12    C1 2002    ABBA  13 1.880  51.60065
+621    724      11    B6 2002    PIMA  72 0.355  48.07840
+622   1684      26    F3 2002    ACSA  38 0.430  54.27000
+623    823      12    C1 2002    ABBA  15 1.480  47.33370
+624   1032      15    D1 2002    THOC 118 1.010  70.36500
+625   1997      32    H3 2002    POGR  68 0.765 121.37000
+626    678      10    B5 2002    PIBA  45 1.350 118.66000
+627    894      12    C1 2002    PIBA  11 1.860  38.13200
+628    554       9    B4 2002    ACRU  54 2.715 119.77000
+629    812      12    C1 2002    ABBA  23 2.070  40.83940
+630   2091      33    H4 2002    BEPA  88 0.027 107.97800
+631   1054      16    D2 2002    ABBA  32 0.575  89.85745
+632   1792      28    G2 2002    ACSA  62 0.350  74.53500
+633   2223      35    H6 2002    PIGL  27 0.519  61.47700
+634    847      12    C1 2002    ABBA  14 2.105  40.14235
+635   1791      28    G2 2002    ACSA  63 0.260  57.46500
+636   1840      29    G3 2002    ACSA  67 0.330  48.96000
+637   1769      28    G2 2002    ACSA  60 0.220  59.87500
+638    117       4    A5 2002    PIST 109 1.095 154.19000
+639   2041      32    H3 2002    BEPA  73 0.260  76.85900
+640     87       4    A5 2002    PIST 101 2.335 138.28000
+641   1702      26    F3 2002    THOC 182 0.172 125.45100
+642   1404      21    E1 2002    ABBA  20 2.480  34.20970
+643    109       4    A5 2002    ABBA  56 0.315  90.64520
+644   1936      31    H2 2002    ABBA  56 0.610  49.38145
+645   1543      23    E3 2002    QURU  49 1.345  64.75500
+646   1187      18    D4 2002    PIMA  40 0.150  59.90220
+647   1553      24    F1 2002    ABBA  36 1.766  38.96770
+648   2230      35    H6 2002    PIGL  28 1.165  72.60300
+649   1985      32    H3 2002    ACRU  72 1.180  70.82000
+650   1263      20    D6 2002    PIMA  63 0.325  72.79320
+651   1178      18    D4 2002    PIMA 128 0.060  50.34960
+652   1420      21    E1 2002    QURU  84 0.230  76.87000
+653   2051      33    H4 2002    ABBA  46 1.376  68.60845
+654   1955      31    H2 2002    POTR  64 0.610 148.57500
+655    521       8    B3 2002    PIMA  23 1.340  69.84100
+656   1856      29    G3 2002    ACSA  69 0.017  99.24100
+657    832      12    C1 2002    ABBA  15 1.340  41.60245
+658   2121      33    H4 2002    BEPA  70 0.000  79.33100
+659   1480      22    E2 2002    ACRU  44 0.630  43.71500
+660   2039      32    H3 2002    BEPA  68 0.490  68.64600
+661     73       4    A5 2002    ABBA  53 1.035 125.44835
+662   1056      16    D2 2002    BEPA  46 2.335 121.27300
+663   1474      22    E2 2002    QURU  75 0.950  70.23000
+664   1777      28    G2 2002    ACSA  57 0.150 107.54500
+665   1689      26    F3 2002    FRNI  62 0.712  86.25400
+666   1419      21    E1 2002    QURU  70 0.590  44.10500
+667   1343      20    D6 2002    PIMA  63 0.895  98.67640
+668    750      11    B6 2002    PIBA  76 0.665 109.21900
+669   1737      27    G1 2002    ACSA 102 0.214  65.78500
+670   2286      35    H6 2002    POTR  35 0.307 108.17900
+671    141       5    A6 2002    ABBA  50 1.340  48.33440
+672   1596      24    F1 2002    FRNI  88 0.282  53.70600
+673    105       4    A5 2002    PIST 112 1.515 146.15000
+674   2122      33    H4 2002    BEPA  74 0.000  94.05900
+675   2048      33    H4 2002    ABBA  26 1.118  49.83990
+676    250       6    B1 2002    PIBA  32 0.990 103.42600
+677    190       6    B1 2002    BEPA  28 0.000  56.70300
+678   1934      31    H2 2002    ABBA  37 1.505  46.90410
+679   1021      15    D1 2002    PIMA  35 0.985  57.24920
+680   1524      23    E3 2002    QURU  81 0.485  54.69000
+681   1838      29    G3 2002    ACSA  73 0.080  81.74000
+682    155       5    A6 2002    PIMA  72 0.335  88.84520
+683   1633      25    F2 2002    FRNI  73 0.639  57.62200
+684    205       6    B1 2002    PIBA  41 0.890  91.16400
+685   1816      29    G3 2002    ACSA  74 0.169  67.67200
+686    124       5    A6 2002    BEPA  86 0.240  88.48600
+687   1175      18    D4 2002    PIMA 152 0.155  51.11440</code></pre>
+</div>
+</div>
+</section>
+<section id="there-are-687-trees-in-a-30-sample-of-2002." class="level2">
+<h2 class="anchored" data-anchor-id="there-are-687-trees-in-a-30-sample-of-2002.">There are 687 trees in a 30% sample of 2002.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#8</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(standID <span class="sc">==</span> <span class="dv">5</span>, year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(rad_ib)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  treeID standID stand year species age   inc   rad_ib
+1    128       5    A6 2007    PIST  82 0.885 238.8850
+2    157       5    A6 2007    PIRE  85 0.900 217.8700
+3    135       5    A6 2007    PIMA  84 0.110 210.1874</code></pre>
+</div>
+</div>
+</section>
+<section id="the-treeids-are-128-157-and-135." class="level2">
+<h2 class="anchored" data-anchor-id="the-treeids-are-128-157-and-135.">The treeIDs are 128, 157, and 135.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#9</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(treeID, standID, year, rad_ib) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(standID <span class="sc">==</span> <span class="dv">3</span>, year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_min</span>(<span class="at">order_by =</span> rad_ib, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  treeID standID year rad_ib
+1     50       3 2007 47.396
+2     56       3 2007 48.440
+3     36       3 2007 54.925</code></pre>
+</div>
+</div>
+</section>
+<section id="the-three-trees-with-the-smallest-radius-at-breast-height-in-2007-are-shown-above-in-the-table-treeid-50-56-and-36." class="level2">
+<h2 class="anchored" data-anchor-id="the-three-trees-with-the-smallest-radius-at-breast-height-in-2007-are-shown-above-in-the-table-treeid-50-56-and-36.">The three trees with the smallest radius at breast height in 2007 are shown above in the table, treeID 50, 56, and 36.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#10</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(treeID, year, rad_ib) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 131,386
+Columns: 3
+$ treeID &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+$ year   &lt;int&gt; 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 197…
+$ rad_ib &lt;dbl&gt; 10.78145, 11.73145, 12.71645, 13.70145, 14.41645, 15.25645, 15.…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#11</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"ID"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 131,386
+Columns: 2
+$ treeID  &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ standID &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#12</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"ID"</span>) <span class="sc">|</span> <span class="fu">contains</span>(<span class="st">"stand"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 131,386
+Columns: 3
+$ treeID  &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ standID &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ stand   &lt;chr&gt; "A1", "A1", "A1", "A1", "A1", "A1", "A1", "A1", "A1", "A1", "A…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#13</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="ot">&lt;-</span> tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">rad_ib_mm =</span> rad_ib, <span class="at">inc_mm =</span> inc) <span class="sc">%&gt;%</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 131,386
+Columns: 8
+$ treeID    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+$ standID   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+$ stand     &lt;chr&gt; "A1", "A1", "A1", "A1", "A1", "A1", "A1", "A1", "A1", "A1", …
+$ year      &lt;int&gt; 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, …
+$ species   &lt;chr&gt; "ABBA", "ABBA", "ABBA", "ABBA", "ABBA", "ABBA", "ABBA", "ABB…
+$ age       &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
+$ inc_mm    &lt;dbl&gt; 0.930, 0.950, 0.985, 0.985, 0.715, 0.840, 0.685, 0.940, 1.16…
+$ rad_ib_mm &lt;dbl&gt; 10.78145, 11.73145, 12.71645, 13.70145, 14.41645, 15.25645, …</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#14</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="ot">&lt;-</span> tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rad_ib_cm =</span> rad_ib_mm <span class="sc">/</span> <span class="dv">10</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="ot">&lt;-</span> tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ba_m2 =</span> <span class="fl">0.00007854</span> <span class="sc">*</span> rad_ib_cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"POTR"</span>, year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_ba =</span> <span class="fu">mean</span>(ba_m2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       mean_ba
+1 0.0007883588</code></pre>
+</div>
+</div>
+</section>
+<section id="the-mean-ba_m2-of-the-populus-tremuloides-species-is-0.0007883588-in-2007" class="level2">
+<h2 class="anchored" data-anchor-id="the-mean-ba_m2-of-the-populus-tremuloides-species-is-0.0007883588-in-2007">The mean BA_m2 of the Populus tremuloides species is 0.0007883588 in 2007</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#15</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">established =</span> <span class="fu">if_else</span>(age <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(established)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  established      n
+1       FALSE   8883
+2        TRUE 122503</code></pre>
+</div>
+</div>
+</section>
+<section id="there-are-122503-established-trees-and-8883-unestablished-trees-less-than-5-years-old" class="level2">
+<h2 class="anchored" data-anchor-id="there-are-122503-established-trees-and-8883-unestablished-trees-less-than-5-years-old">There are 122503 established trees and 8883 unestablished trees (less than 5 years old)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#16</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">DBH_class =</span> <span class="fu">case_when</span>(</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    rad_ib_cm <span class="sc">&lt;=</span> <span class="fl">2.5</span> <span class="sc">~</span> <span class="st">"seedling"</span>,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    rad_ib_cm <span class="sc">&gt;</span> <span class="fl">2.5</span> <span class="sc">&amp;</span> rad_ib_cm <span class="sc">&lt;=</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"sapling"</span>,</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    rad_ib_cm <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">&amp;</span> rad_ib_cm <span class="sc">&lt;=</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">"pole"</span>,</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    rad_ib_cm <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">"sawlog"</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">count</span>(DBH_class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  DBH_class    n
+1      pole  473
+2   sapling 1817
+3    sawlog    1</code></pre>
+</div>
+</div>
+</section>
+<section id="there-are-473-poles-1817-saplings-and-1-sawlog-in-2007." class="level2">
+<h2 class="anchored" data-anchor-id="there-are-473-poles-1817-saplings-and-1-sawlog-in-2007.">There are 473 poles, 1817 saplings, and 1 sawlog in 2007.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#17</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_rad_ib =</span> <span class="fu">mean</span>(rad_ib_cm), <span class="at">sd_rad_ib =</span> <span class="fu">sd</span>(rad_ib_cm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean_rad_ib sd_rad_ib
+1    8.046755  3.069321</code></pre>
+</div>
+</div>
+</section>
+<section id="the-mean-breast-radius-was-8.046755cm-in-2007.-this-suggests-that-the-average-tree-in-2007-would-be-considered-a-sapling-which-is-consistent-with-the-results-from-question-16.-the-standard-deviation-was-3.069321cm-indicating-that-68-of-the-trees-will-have-a-dbh-between-4.98-cm-and-11.12-cm.-this-is-again-consistent-with-question-16-as-the-second-largest-dbh-class-was-pole-the-next-grouping-larger-than-sapling.-since-no-trees-measured-were-seedlings-this-suggests-a-somewhat-normal-distribution-but-with-a-right-skew." class="level2">
+<h2 class="anchored" data-anchor-id="the-mean-breast-radius-was-8.046755cm-in-2007.-this-suggests-that-the-average-tree-in-2007-would-be-considered-a-sapling-which-is-consistent-with-the-results-from-question-16.-the-standard-deviation-was-3.069321cm-indicating-that-68-of-the-trees-will-have-a-dbh-between-4.98-cm-and-11.12-cm.-this-is-again-consistent-with-question-16-as-the-second-largest-dbh-class-was-pole-the-next-grouping-larger-than-sapling.-since-no-trees-measured-were-seedlings-this-suggests-a-somewhat-normal-distribution-but-with-a-right-skew.">The mean breast radius was 8.046755cm in 2007. This suggests that the average tree in 2007 would be considered a sapling, which is consistent with the results from question 16. The standard deviation was 3.069321cm, indicating that 68% of the trees will have a DBH between ~4.98 cm and 11.12 cm. This is again consistent with question 16, as the second largest DBH class was pole, the next grouping larger than sapling. Since no trees measured were seedlings, this suggests a somewhat normal distribution but with a right skew.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#18</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2003</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">species_mean_age =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(species_mean_age)) <span class="sc">%&gt;%</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  species species_mean_age
+  &lt;chr&gt;              &lt;dbl&gt;
+1 THOC               127. 
+2 FRNI                83.1
+3 PIST                73.3</code></pre>
+</div>
+</div>
+</section>
+<section id="the-species-with-the-highest-mean-ages-in-2003-are-thuja-occidentalis-fraxinus-nigra-and-pinus-strobus" class="level2">
+<h2 class="anchored" data-anchor-id="the-species-with-the-highest-mean-ages-in-2003-are-thuja-occidentalis-fraxinus-nigra-and-pinus-strobus">The species with the highest mean ages in 2003 are Thuja occidentalis, Fraxinus nigra, and Pinus strobus</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#19</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">unique_years =</span> <span class="fu">n_distinct</span>(year),</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">first_year =</span> <span class="fu">min</span>(year),</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">last_year =</span> <span class="fu">max</span>(year)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  unique_years first_year last_year
+1          111       1897      2007</code></pre>
+</div>
+</div>
+</section>
+<section id="the-data-collected-covers-111-unique-years-with-the-first-year-being-in-1897-and-the-last-year-in-2007." class="level2">
+<h2 class="anchored" data-anchor-id="the-data-collected-covers-111-unique-years-with-the-first-year-being-in-1897-and-the-last-year-in-2007.">The data collected covers 111 unique years, with the first year being in 1897 and the last year in 2007.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#20</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(standID) <span class="sc">%&gt;%</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">unique_years =</span> <span class="fu">n_distinct</span>(year)) <span class="sc">%&gt;%</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(unique_years <span class="sc">==</span> <span class="fu">max</span>(unique_years))<span class="sc">%&gt;%</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  standID unique_years
+    &lt;int&gt;        &lt;int&gt;
+1       1          111
+2      15          111
+3      16          111
+4      17          111
+5      24          111</code></pre>
+</div>
+</div>
+</section>
+<section id="stands-1-15-16-17-and-24-are-tied-for-the-maximum-number-of-unique-years-recorded-at-111-the-total-span-of-the-data-collection-period." class="level2">
+<h2 class="anchored" data-anchor-id="stands-1-15-16-17-and-24-are-tied-for-the-maximum-number-of-unique-years-recorded-at-111-the-total-span-of-the-data-collection-period.">Stands 1, 15, 16, 17, and 24 are tied for the maximum number of unique years recorded at 111, the total span of the data collection period.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#21</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species, treeID) <span class="sc">%&gt;%</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(treeID, year) <span class="sc">%&gt;%</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">annual_growth =</span> rad_ib_cm <span class="sc">-</span> <span class="fu">lag</span>(rad_ib_cm),</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">total_growth_record =</span> <span class="fu">n_distinct</span>(year)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_growth_record <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_growth =</span> <span class="fu">mean</span>(annual_growth, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_growth =</span> <span class="fu">sd</span>(annual_growth, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_growth)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  species avg_growth sd_growth
+  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;
+1 PIRE         0.179     0.129
+2 POTR         0.165     0.109
+3 PIBA         0.163     0.123</code></pre>
+</div>
+</div>
+</section>
+<section id="the-three-species-with-the-fastest-average-growth-rate-are-pinus-resinosa-populus-tremuloides-and-pinus-banksiana" class="level2">
+<h2 class="anchored" data-anchor-id="the-three-species-with-the-fastest-average-growth-rate-are-pinus-resinosa-populus-tremuloides-and-pinus-banksiana">The three species with the fastest average growth rate are Pinus resinosa, Populus tremuloides, and Pinus banksiana</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>tree_dat <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species, treeID) <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(treeID, year) <span class="sc">%&gt;%</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">annual_growth =</span> rad_ib_cm <span class="sc">-</span> <span class="fu">lag</span>(rad_ib_cm),</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">total_growth_record =</span> <span class="fu">n_distinct</span>(year)) <span class="sc">%&gt;%</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_growth_record <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_growth =</span> <span class="fu">mean</span>(annual_growth, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_growth =</span> <span class="fu">sd</span>(annual_growth, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(avg_growth) <span class="sc">%&gt;%</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  species avg_growth sd_growth
+  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;
+1 LALA        0.0749    0.0564
+2 THOC        0.0765    0.0455
+3 QURU        0.0838    0.0434</code></pre>
+</div>
+</div>
+</section>
+<section id="the-three-species-with-the-slowest-average-growth-rate-are-larix-laricina-thuja-occidentalis-and-quercus-rubra." class="level2">
+<h2 class="anchored" data-anchor-id="the-three-species-with-the-slowest-average-growth-rate-are-larix-laricina-thuja-occidentalis-and-quercus-rubra.">The three species with the slowest average growth rate are Larix laricina, Thuja occidentalis, and Quercus rubra.</h2>
+</section>
+<section id="a-picture-of-pinus-resinosa-the-fastest-growing-species-is-located-in-the-img-folder-as-well-as-below." class="level2">
+<h2 class="anchored" data-anchor-id="a-picture-of-pinus-resinosa-the-fastest-growing-species-is-located-in-the-img-folder-as-well-as-below.">A picture of Pinus resinosa, the fastest growing species, is located in the img folder as well as below.</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/pinus_resinosa.jpg" class="img-fluid figure-img"></p>
+<figcaption>Pinus resinosa</figcaption>
+</figure>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
